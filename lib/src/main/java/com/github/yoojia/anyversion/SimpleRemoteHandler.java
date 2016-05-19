@@ -2,8 +2,6 @@ package com.github.yoojia.anyversion;
 
 import android.net.Uri;
 
-import org.apache.http.HttpStatus;
-
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.IOException;
@@ -66,7 +64,7 @@ class SimpleRemoteHandler extends RemoteHandler {
             readAndCloseStream(conn.getErrorStream());
             throw e;
         }
-        if (httpCode != HttpStatus.SC_OK) {
+        if (httpCode != HttpURLConnection.HTTP_OK) {
             closeSilently(stream);
             throw new IOException("URL request failed with response code " + httpCode);
         }
